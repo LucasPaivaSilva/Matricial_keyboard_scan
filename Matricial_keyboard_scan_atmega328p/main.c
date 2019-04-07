@@ -6,15 +6,12 @@
  */ 
 
 #define F_CPU 16000000UL	//define a frequencia do microcontrolador - 16MHz
-
 #include <avr/io.h> 	    //definições do componente especificado
 #include <util/delay.h>		//biblioteca para o uso das rotinas de _delay_ms e _delay_us()
-
 #define	set_bit(y,bit)	(y|=(1<<bit))	//coloca em 1 o bit x da variável Y
 #define	clr_bit(y,bit)	(y&=~(1<<bit))	//coloca em 0 o bit x da variável Y
 #define cpl_bit(y,bit) 	(y^=(1<<bit))	//troca o estado lógico do bit x da variável Y
 #define tst_bit(y,bit) 	(y&(1<<bit))	//retorna 0 ou 1 conforme leitura do bit
-
 const unsigned char ScanBytes[]= {0b11111110, 0b11111101, 0b11111011, 0b11110111};
 unsigned char PadDigits[4] [4] =   {{'7', '8', '9', 'D'},
 									{'4', '5', '6', 'T'},
