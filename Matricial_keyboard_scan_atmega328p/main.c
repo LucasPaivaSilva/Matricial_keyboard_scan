@@ -16,26 +16,32 @@
 #define tst_bit(y,bit) 	(y&(1<<bit))	//retorna 0 ou 1 conforme leitura do bit
 
 const unsigned char ScanBytes[]= {0b11111110, 0b11111101, 0b11111011, 0b11110111};
+unsigned char PadDigits[4] [4] =   {{'7', '8', '9', 'D'},
+									{'4', '5', '6', 'T'},
+									{'1', '2', '3', 'M'},
+									{'O', '0', 'E', 'P'}};
 
 int main(void)
 {
-	int x = 0;
+	unsigned char ToSend;
+	int x = 0;	
 	int y = 0;
-	DDRD  = 0xFF;
-	DDRC  = 0xFF;
-	DDRB  = 0x00;
-	PORTB = 0xFF;
+	DDRD  = 0xFF;	//Conigura como saida 
+	DDRC  = 0xFF;	//Conigura como saida 
+	DDRB  = 0x00;	//Conigura como entrada 
+	PORTB = 0xFF;	//Habilita o pull up do port B
 	
 	while(1)
 	{
 		for (x=0;x<4;x++)
 		{
-			PORTD = ScanBytes[x];
+			PORTD = ScanBytes[x]; // Mudo o estado da saida do port para valor em scanbytes
 			for (y=0;y<4;y++)
 			{
 				if (tst_bit(PINB, y)==0)
 				{
-					
+					ToSend = PadDigits[x][y]
+					//FUNÇÃO A SER EXECUTADA 
 				}
 			}
 		}
