@@ -104,45 +104,21 @@ Disassembly of section .text:
   de:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 000000e2 <main>:
-
-int main(void)
-{
-	int x = 0;
-	int y = 0;
-	DDRD  = 0xFF;
   e2:	8f ef       	ldi	r24, 0xFF	; 255
   e4:	8a b9       	out	0x0a, r24	; 10
-	DDRC  = 0xFF;
   e6:	87 b9       	out	0x07, r24	; 7
-	DDRB  = 0x00;
   e8:	14 b8       	out	0x04, r1	; 4
-	PORTB = 0xFF;
   ea:	85 b9       	out	0x05, r24	; 5
   ec:	24 e0       	ldi	r18, 0x04	; 4
   ee:	31 e0       	ldi	r19, 0x01	; 1
   f0:	e0 e0       	ldi	r30, 0x00	; 0
   f2:	f1 e0       	ldi	r31, 0x01	; 1
-	
-	while(1)
-	{
-		for (x=0;x<4;x++)
-		{
-			PORTD = ScanBytes[x];
   f4:	81 91       	ld	r24, Z+
   f6:	8b b9       	out	0x0b, r24	; 11
-			for (y=0;y<4;y++)
-			{
-				if (tst_bit(PINB, y)==0)
   f8:	83 b1       	in	r24, 0x03	; 3
   fa:	83 b1       	in	r24, 0x03	; 3
   fc:	83 b1       	in	r24, 0x03	; 3
   fe:	83 b1       	in	r24, 0x03	; 3
-	DDRB  = 0x00;
-	PORTB = 0xFF;
-	
-	while(1)
-	{
-		for (x=0;x<4;x++)
  100:	e2 17       	cp	r30, r18
  102:	f3 07       	cpc	r31, r19
  104:	b9 f7       	brne	.-18     	; 0xf4 <main+0x12>
